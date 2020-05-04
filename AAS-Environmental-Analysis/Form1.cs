@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,7 +75,7 @@ namespace AAS_Environmental_Analysis
             Filter.Add(new Dupla("Variable", "variable="));
             Filter.Add(new Dupla("Unidad", "unidades="));
             Filter.Add(new Dupla("Concentracion", "concentraci_n="));
-            
+
             //---------------------------------------------------
             Boxes.Add(txtFecha);
             Boxes.Add(txtAutoridad);
@@ -137,12 +140,12 @@ namespace AAS_Environmental_Analysis
             {
                 if (i % 1000 == 0)
                 {
-                    if(progressBar.Value<100)
+                    if (progressBar.Value < 100)
                         progressBar.Value++;
-                }   
+                }
             }
             Thread.Sleep(500);
-           progressBar.Value = 1;
+            progressBar.Value = 1;
         }
 
         private void btLoad_Click(object sender, EventArgs e)
@@ -230,5 +233,116 @@ namespace AAS_Environmental_Analysis
             btSearch.Enabled = true;
             paneMultipleFilters.Visible = false;
         }
+
+        private void gMapControl1_Load(object sender, EventArgs e)
+        {
+            map.MapProvider = GMapProviders.GoogleMap;
+            map.Position = new PointLatLng(4.570868, -74.2973328);
+            map.MinZoom = 5;
+            map.MaxZoom = 100;
+            map.Zoom = 10;
+
+        }
+
+        private void LoadButton_Click(object sender, EventArgs e)
+        {
+
+            double lat = double.Parse(textLat.Text);
+            double lon = double.Parse(textLong.Text);
+            double t = Double.Parse(ttext.Text) / 1000;
+            MessageBox.Show(lat + " " + lon);
+            map.Position = new PointLatLng(lat, lon);
+            double r = t;
+            drawCircle(lat, lon, r);
+        }
+        
+        public void drawCircle(double lat, double lon, double r)
+        {
+            Pen pen = getPenColor(r);
+            SolidBrush solidBrush = getBrushColor(r);
+
+            List <PointLatLng> points = getPoints(lat, lon, r);
+
+            var polygon = new GMapPolygon(points, "MyArea")
+            {
+               
+                Stroke = pen,
+                Fill = solidBrush
+
+            };
+
+            var polygons = new GMapOverlay("polygons");
+            polygons.Polygons.Add(polygon);
+
+            map.Overlays.Add(polygons);
+
+        }
+
+        private List<PointLatLng> getPoints(double lat, double lon, double r)
+        {
+            List<PointLatLng> points = new List<PointLatLng>();
+            double[] a = new double[16];
+
+            a[0] = 0;
+            a[1] = Math.PI / 6;
+            a[2] = Math.PI / 4;
+            a[3] = Math.PI / 3;
+            a[4] = Math.PI / 2;
+            a[5] = Math.PI * 2 / 3;
+            a[6] = Math.PI * 3 / 4;
+            a[7] = Math.PI * 5 / 6;
+            a[8] = Math.PI;
+            a[9] = Math.PI * 7 / 6;
+            a[10] = Math.PI * 5 / 4;
+            a[11] = Math.PI * 4 / 3;
+            a[12] = Math.PI * 3 / 2;
+            a[13] = Math.PI * 5 / 3;
+            a[14] = Math.PI * 7 / 4;
+            a[15] = Math.PI * 11 / 6;
+
+            for (int i = 0; i<a.Length; i++) {
+                double x = r * Math.Cos(a[i]);
+                double y = r * Math.Sin(a[i]);
+
+                points.Add(new PointLatLng(x+lat, y+lon));
+            }
+
+            return points;
+        }
+
+        public Pen getPenColor(double r) {
+            Pen pen = new Pen(Color.FromArgb(120, 255, 196, 0), 2);
+
+            if (r * 1000 >= 35) {
+                pen = new Pen(Color.FromArgb(120, 255, 87, 40), 2);
+            }
+
+            if (r * 1000 >= 70)
+            {
+                pen = new Pen(Color.FromArgb(120, 201, 0, 53), 2);
+            }
+
+            return pen;
+        }
+
+        public SolidBrush getBrushColor(double r) {
+
+            SolidBrush solidBrush = new SolidBrush(Color.FromArgb(120, 255, 196, 0));
+
+            if (r * 1000 >= 35)
+            {
+                solidBrush = new SolidBrush(Color.FromArgb(120, 255, 87, 40));
+            }
+
+            if (r * 1000 >= 70)
+            {
+                solidBrush = new SolidBrush(Color.FromArgb(120, 201, 0, 53));
+            }
+
+            return solidBrush;
+        }
+
+
+        
     }
 }
