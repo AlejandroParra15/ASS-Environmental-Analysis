@@ -223,6 +223,22 @@ namespace AAS_Environmental_Analysis
             paneMultipleFilters.Visible = true;
         }
 
+        public void loadHeapMap() {
+
+            for (int i = 0; i < data.Count; i++) {
+
+                double lat = data.ElementAt(i).latitud;
+                double lon = data.ElementAt(i).longitud;
+
+                double r = data.ElementAt(i).concentracion;
+               
+                drawCircle(lat, lon, r);
+            }
+
+
+        }
+
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             this.Size = new Size(1100, 560);
@@ -246,7 +262,7 @@ namespace AAS_Environmental_Analysis
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-
+            /*
             double lat = double.Parse(textLat.Text);
             double lon = double.Parse(textLong.Text);
             double t = Double.Parse(ttext.Text) / 1000;
@@ -254,10 +270,16 @@ namespace AAS_Environmental_Analysis
             map.Position = new PointLatLng(lat, lon);
             double r = t;
             drawCircle(lat, lon, r);
+            */
+
+            loadHeapMap();
         }
         
         public void drawCircle(double lat, double lon, double r)
         {
+
+            r = r / 10000;
+            MessageBox.Show(lat + " " + lon + " " + r);
             Pen pen = getPenColor(r);
             SolidBrush solidBrush = getBrushColor(r);
 
@@ -280,6 +302,7 @@ namespace AAS_Environmental_Analysis
 
         private List<PointLatLng> getPoints(double lat, double lon, double r)
         {
+       
             List<PointLatLng> points = new List<PointLatLng>();
             double[] a = new double[16];
 
@@ -313,11 +336,11 @@ namespace AAS_Environmental_Analysis
         public Pen getPenColor(double r) {
             Pen pen = new Pen(Color.FromArgb(120, 255, 196, 0), 2);
 
-            if (r * 1000 >= 35) {
+            if (r * 10000 >= 35) {
                 pen = new Pen(Color.FromArgb(120, 255, 87, 40), 2);
             }
 
-            if (r * 1000 >= 70)
+            if (r * 10000 >= 70)
             {
                 pen = new Pen(Color.FromArgb(120, 201, 0, 53), 2);
             }
@@ -327,16 +350,16 @@ namespace AAS_Environmental_Analysis
 
         public SolidBrush getBrushColor(double r) {
 
-            SolidBrush solidBrush = new SolidBrush(Color.FromArgb(120, 255, 196, 0));
+            SolidBrush solidBrush = new SolidBrush(Color.FromArgb(5, 255, 196, 0));
 
             if (r * 1000 >= 35)
             {
-                solidBrush = new SolidBrush(Color.FromArgb(120, 255, 87, 40));
+                solidBrush = new SolidBrush(Color.FromArgb(5, 255, 87, 40));
             }
 
             if (r * 1000 >= 70)
             {
-                solidBrush = new SolidBrush(Color.FromArgb(120, 201, 0, 53));
+                solidBrush = new SolidBrush(Color.FromArgb(5, 201, 0, 53));
             }
 
             return solidBrush;
