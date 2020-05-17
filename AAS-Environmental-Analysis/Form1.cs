@@ -19,6 +19,7 @@ namespace AAS_Environmental_Analysis
 {
     public partial class Form1 : Form
     {
+        
 
         //------------------------------------------------
         public int offset = 0;
@@ -127,7 +128,9 @@ namespace AAS_Environmental_Analysis
 
         public void callData(int page, String url, String id)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://" + url + "/resource/" + id + ".json?$limit=" + 20 + "&$offset=" + offset + extension);
+          
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://" + url + "/resource/" + id + ".json?$limit=" + 1000 + "&$offset=" + offset + extension);
+           // Console.WriteLine("https://" + url + "/resource/" + id + ".json?$limit=" + 1000 + "&$offset=" + offset + extension);
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
@@ -278,8 +281,7 @@ namespace AAS_Environmental_Analysis
         public void drawCircle(double lat, double lon, double r)
         {
 
-            r = r / 10000;
-            MessageBox.Show(lat + " " + lon + " " + r);
+            r = r / 100;
             Pen pen = getPenColor(r);
             SolidBrush solidBrush = getBrushColor(r);
 
@@ -336,11 +338,11 @@ namespace AAS_Environmental_Analysis
         public Pen getPenColor(double r) {
             Pen pen = new Pen(Color.FromArgb(120, 255, 196, 0), 2);
 
-            if (r * 10000 >= 35) {
+            if (r * 1000 >= 35) {
                 pen = new Pen(Color.FromArgb(120, 255, 87, 40), 2);
             }
 
-            if (r * 10000 >= 70)
+            if (r * 1000 >= 70)
             {
                 pen = new Pen(Color.FromArgb(120, 201, 0, 53), 2);
             }
@@ -349,23 +351,120 @@ namespace AAS_Environmental_Analysis
         }
 
         public SolidBrush getBrushColor(double r) {
-
-            SolidBrush solidBrush = new SolidBrush(Color.FromArgb(5, 255, 196, 0));
+           // MessageBox.Show(""+r);
+            SolidBrush solidBrush = new SolidBrush(Color.FromArgb(50, 255, 196, 0));
 
             if (r * 1000 >= 35)
             {
-                solidBrush = new SolidBrush(Color.FromArgb(5, 255, 87, 40));
+                solidBrush = new SolidBrush(Color.FromArgb(50, 255, 87, 40));
             }
 
             if (r * 1000 >= 70)
             {
-                solidBrush = new SolidBrush(Color.FromArgb(5, 201, 0, 53));
+                solidBrush = new SolidBrush(Color.FromArgb(50, 201, 0, 53));
             }
 
             return solidBrush;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //drawHeatMap();
+            loadFile();
+        }
 
-        
+        public void loadFile() {
+
+            List<string> heatMapData = new List<string>();
+            heatMapData.Add("6,436 -75,333431");
+            heatMapData.Add("6,409306 -75,417306");
+            heatMapData.Add("6,3375 -75,567778");
+            heatMapData.Add("6,330697 -75,568669");
+            heatMapData.Add("6,101972 -75,641944");
+            heatMapData.Add("6,094611 -75,638");
+            heatMapData.Add("6,252639 -75,569833");
+            heatMapData.Add("6,1686831 -75,5819702");
+            heatMapData.Add("6,1555305 -75,6441727");
+            heatMapData.Add("6,378517 -75,443986");
+            heatMapData.Add("6,379 -75,4509");
+            heatMapData.Add("6,188444 -75,600667");
+            heatMapData.Add("6,17125 -75,647694");
+            heatMapData.Add("6,174472 -75,610278");
+            heatMapData.Add("6,249333 -75,57025");
+            heatMapData.Add("6,2755637 -75,5882874");
+            heatMapData.Add("6,211806 -75,581111");
+            heatMapData.Add("6,1825 -75,5506");
+            heatMapData.Add("6,274003 -75,592578");
+            heatMapData.Add("6,266139 -75,580222");
+            heatMapData.Add("6,189528 -75,559833");
+            heatMapData.Add("6,2301841 -75,6099624");
+            heatMapData.Add("6,153472 75,619556");
+            heatMapData.Add("6,1523128 -75,6274872");
+            heatMapData.Add("4,530213886 -74,14221714");
+            heatMapData.Add("4,957911483 -74,01097625");
+            heatMapData.Add("5,129058937 -73,89588519");
+
+
+            drawGeneralMap(heatMapData);
+
+        }
+
+
+        public void drawGeneralMap(List<string> heatMapData) {
+            Random rnd = new Random();
+            for (int i = 0; i <heatMapData.Count(); i++) {
+                string[] parts = heatMapData.ElementAt(i).Split(' ');
+               // MessageBox.Show(" "+Convert.ToDouble(parts[0]));
+                drawCircle(Convert.ToDouble(parts[0]), Convert.ToDouble(parts[1]), rnd.Next(2, 10));
+
+            }
+        }
+
+        public int randomNumber(int min, int max)
+        {
+            Random random = new Random();
+            return random.Next(min, max);
+        }
+        public void drawHeatMap() {
+
+            List<Data> heatMapData = new List<Data>();
+            int maxLimit = 1000;
+
+            int range = 1;
+            int oS = 0;
+
+            int counter = 0;
+            while (counter < maxLimit)
+            {
+                List<Data> temp = new List<Data>();
+               
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://" + "www.datos.gov.co" + "/resource/" + "ysq6-ri4e" + ".json?$limit=" + range + "&$offset=" + oS + "&variable=Temperatura");
+                
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var json = reader.ReadToEnd();
+                    temp = JsonConvert.DeserializeObject<List<Data>>(json);
+                }
+
+
+                for (int i = 0; i<temp.Count; i++) {
+                    heatMapData.Add(temp.ElementAt(i));
+                }
+
+
+                oS = oS + 10000;
+                counter++;
+            }
+
+            for (int i = 0; i<heatMapData.Count; i++) {
+                Data current = heatMapData.ElementAt(i);
+                Console.WriteLine(current.latitud+" "+current.longitud);
+                drawCircle(current.latitud, current.longitud, 8000);
+            }
+                counter++;
+            
+        }
     }
 }

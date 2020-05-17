@@ -67,12 +67,7 @@
             this.tbUrl = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.LoadButton = new System.Windows.Forms.Button();
-            this.textLong = new System.Windows.Forms.TextBox();
-            this.textLat = new System.Windows.Forms.TextBox();
-            this.Lon = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.map = new GMap.NET.WindowsForms.GMapControl();
             this.btSearchMultiple = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btNext = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -87,7 +82,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.ttext = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -827,13 +821,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.ttext);
-            this.panel5.Controls.Add(this.label13);
-            this.panel5.Controls.Add(this.LoadButton);
-            this.panel5.Controls.Add(this.textLong);
-            this.panel5.Controls.Add(this.textLat);
-            this.panel5.Controls.Add(this.Lon);
-            this.panel5.Controls.Add(this.label12);
+            this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.map);
             this.panel5.Controls.Add(this.btSearchMultiple);
             this.panel5.Controls.Add(this.btNext);
@@ -849,56 +837,15 @@
             this.panel5.Size = new System.Drawing.Size(1533, 452);
             this.panel5.TabIndex = 0;
             // 
-            // label13
+            // button1
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(877, 336);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(110, 17);
-            this.label13.TabIndex = 21;
-            this.label13.Text = "T (10 C - 100 C)";
-            // 
-            // LoadButton
-            // 
-            this.LoadButton.Location = new System.Drawing.Point(985, 352);
-            this.LoadButton.Name = "LoadButton";
-            this.LoadButton.Size = new System.Drawing.Size(123, 28);
-            this.LoadButton.TabIndex = 20;
-            this.LoadButton.Text = "Load in to map";
-            this.LoadButton.UseVisualStyleBackColor = true;
-            this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
-            // 
-            // textLong
-            // 
-            this.textLong.Location = new System.Drawing.Point(711, 356);
-            this.textLong.Name = "textLong";
-            this.textLong.Size = new System.Drawing.Size(168, 22);
-            this.textLong.TabIndex = 19;
-            // 
-            // textLat
-            // 
-            this.textLat.Location = new System.Drawing.Point(562, 356);
-            this.textLat.Name = "textLat";
-            this.textLat.Size = new System.Drawing.Size(143, 22);
-            this.textLat.TabIndex = 18;
-            // 
-            // Lon
-            // 
-            this.Lon.AutoSize = true;
-            this.Lon.Location = new System.Drawing.Point(708, 336);
-            this.Lon.Name = "Lon";
-            this.Lon.Size = new System.Drawing.Size(40, 17);
-            this.Lon.TabIndex = 17;
-            this.Lon.Text = "Long";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(559, 336);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(28, 17);
-            this.label12.TabIndex = 16;
-            this.label12.Text = "Lat";
+            this.button1.Location = new System.Drawing.Point(1009, 325);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "HeatMap";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // map
             // 
@@ -1187,13 +1134,6 @@
             this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // ttext
-            // 
-            this.ttext.Location = new System.Drawing.Point(895, 356);
-            this.ttext.Name = "ttext";
-            this.ttext.Size = new System.Drawing.Size(55, 22);
-            this.ttext.TabIndex = 22;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1299,13 +1239,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private GMap.NET.WindowsForms.GMapControl map;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button LoadButton;
-        private System.Windows.Forms.TextBox textLong;
-        private System.Windows.Forms.TextBox textLat;
-        private System.Windows.Forms.Label Lon;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox ttext;
+        private System.Windows.Forms.Button button1;
     }
 }
 
