@@ -60,6 +60,8 @@ namespace AAS_Environmental_Analysis
             paneFilters.Visible = false;
             rbSingle.Visible = false;
             rbMultiple.Visible = false;
+            panelHeatMap.Visible = false;
+            panelSupHeatMap.Visible = false;
             //---------------------------------------------
             Filter.Add(new Dupla("Fecha", "fecha=") { });
             Filter.Add(new Dupla("Autoridad", "autoridad_ambiental=") { });
@@ -196,9 +198,11 @@ namespace AAS_Environmental_Analysis
         private void btDataBase_Click(object sender, EventArgs e)
         {
             paneDataBase.Visible = true;
+            panelHeatMap.Visible = false;
             paneFilters.Visible = false;
             rbSingle.Visible = false;
             rbMultiple.Visible = false;
+            panelSupHeatMap.Visible = false;
             this.Size = new Size(1100, 560);
             btClose.Location = new Point(1065, 2);
             btMinimize.Location = new Point(1030, 2);
@@ -209,10 +213,40 @@ namespace AAS_Environmental_Analysis
         private void btFilters_Click(object sender, EventArgs e)
         {
             paneDataBase.Visible = false;
+            panelHeatMap.Visible = false;
             paneFilters.Visible = true;
             rbSingle.Visible = true;
+            panelSupHeatMap.Visible = false;
             rbMultiple.Visible = true;
             paneFilters.BringToFront();
+        }
+
+          private void btRegression_Click(object sender, EventArgs e)
+        {
+            panelHeatMap.Visible = false;
+            panelSupHeatMap.Visible = false;
+            paneDataBase.Visible = false;
+            paneFilters.Visible = false;
+            rbSingle.Visible = false;
+            rbMultiple.Visible = false;
+            this.Size = new Size(1100, 560);
+            btClose.Location = new Point(1065, 2);
+            btMinimize.Location = new Point(1030, 2);
+            paneMultipleFilters.Visible = false;
+        }
+
+        private void btHeatMap_Click(object sender, EventArgs e)
+        {
+            panelHeatMap.Visible = true;
+            panelSupHeatMap.Visible = true;
+            paneDataBase.Visible = false;
+            paneFilters.Visible = false;
+            rbSingle.Visible = false;
+            rbMultiple.Visible = false;
+            this.Size = new Size(1100, 560);
+            btClose.Location = new Point(1065, 2);
+            btMinimize.Location = new Point(1030, 2);
+            paneMultipleFilters.Visible = false;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -477,5 +511,6 @@ namespace AAS_Environmental_Analysis
         {
             clearMap();
         }
+
     }
 }
