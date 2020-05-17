@@ -477,5 +477,11 @@ namespace AAS_Environmental_Analysis
         {
             clearMap();
         }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.Show();
+        }
     }
 }

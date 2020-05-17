@@ -1,6 +1,8 @@
-﻿namespace LinearRegresion
+﻿using System;
+
+namespace AAS_Environmental_Analysis
 {
-    partial class Form1
+    partial class Form2
     {
         /// <summary>
         /// Required designer variable.
@@ -31,33 +33,24 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.RegresionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.result = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.RegresionChart)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // label2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(173, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(261, 38);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Regresion Lineal";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(310, 107);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 36);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Calculate";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(87, 26);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(217, 31);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Regresion Lineal";
             // 
             // comboBox1
             // 
@@ -67,10 +60,21 @@
             "CO2",
             "NO2",
             "O3"});
-            this.comboBox1.Location = new System.Drawing.Point(144, 114);
+            this.comboBox1.Location = new System.Drawing.Point(60, 103);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(205, 103);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(68, 29);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Calculate";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // RegresionChart
             // 
@@ -78,38 +82,38 @@
             this.RegresionChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.RegresionChart.Legends.Add(legend1);
-            this.RegresionChart.Location = new System.Drawing.Point(62, 171);
+            this.RegresionChart.Location = new System.Drawing.Point(22, 153);
+            this.RegresionChart.Margin = new System.Windows.Forms.Padding(2);
             this.RegresionChart.Name = "RegresionChart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.RegresionChart.Series.Add(series1);
-            this.RegresionChart.Size = new System.Drawing.Size(614, 371);
-            this.RegresionChart.TabIndex = 5;
+            this.RegresionChart.Size = new System.Drawing.Size(460, 301);
+            this.RegresionChart.TabIndex = 7;
             this.RegresionChart.Text = "chart1";
-            this.RegresionChart.Click += new System.EventHandler(this.RegresionChart_Click);
             // 
             // result
             // 
             this.result.AutoSize = true;
-            this.result.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.result.Location = new System.Drawing.Point(526, 61);
+            this.result.Location = new System.Drawing.Point(105, 488);
             this.result.Name = "result";
-            this.result.Size = new System.Drawing.Size(0, 29);
-            this.result.TabIndex = 6;
+            this.result.Size = new System.Drawing.Size(35, 13);
+            this.result.TabIndex = 8;
+            this.result.Text = "label1";
             // 
-            // Form1
+            // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 591);
+            this.ClientSize = new System.Drawing.Size(601, 533);
             this.Controls.Add(this.result);
             this.Controls.Add(this.RegresionChart);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label2);
+            this.Name = "Form2";
+            this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.RegresionChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -118,11 +122,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataVisualization.Charting.Chart RegresionChart;
         private System.Windows.Forms.Label result;
     }
 }
-
