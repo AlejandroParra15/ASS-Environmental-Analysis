@@ -302,6 +302,10 @@ namespace AAS_Environmental_Analysis
 
         }
 
+        public void clearMap() {
+            map.Overlays.Clear();
+
+        }
         private List<PointLatLng> getPoints(double lat, double lon, double r)
         {
        
@@ -420,6 +424,8 @@ namespace AAS_Environmental_Analysis
             }
         }
 
+
+
         public int randomNumber(int min, int max)
         {
             Random random = new Random();
@@ -465,6 +471,11 @@ namespace AAS_Environmental_Analysis
             }
                 counter++;
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            clearMap();
         }
     }
 }
