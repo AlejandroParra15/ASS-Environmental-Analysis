@@ -11,9 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LinearRegresion
+namespace AAS_Environmental_Analysis
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
         List<Data> data = null;
         List<String> Dates = new List<String>();
@@ -21,7 +21,8 @@ namespace LinearRegresion
         public static double DYintercept;
         double[] year = new double[] { 2011, 2012, 2013, 2014, 2015, 2016, 2017 };
         double[] concentration;
-        public Form1()
+
+        public Form2()
         {
             InitializeComponent();
             Dates.Add("09/04/2011 12:00:00 a. m.");
@@ -76,9 +77,7 @@ namespace LinearRegresion
             RegresionChart.Series["QR Line"].Points.AddXY(year[0], predicted1);
             RegresionChart.Series["QR Line"].Points.AddXY(year[6], predicted2);
             result.Text = "Pendiente : " + Math.Round(slope) + "\n" + "\n" + "Intercepto con Y : " + Math.Round(yintercept);
-
         }
-
 
         public void callData(String url, String id, String extension, String variable)
         {
@@ -161,11 +160,6 @@ namespace LinearRegresion
                 array[c] = data[c].concentracion;
             }
             return array;
-        }
-
-        private void RegresionChart_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
