@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAS-Environmental-Analysis", "AAS-Environmental-Analysis\AAS-Environmental-Analysis.csproj", "{FB892F7C-BC66-44BD-B463-7BF00A3906A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinearRegresion", "LinearRegresion\LinearRegresion.csproj", "{1C833184-0AB7-49DC-A6D6-78F5AA6252E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FB892F7C-BC66-44BD-B463-7BF00A3906A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB892F7C-BC66-44BD-B463-7BF00A3906A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB892F7C-BC66-44BD-B463-7BF00A3906A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C833184-0AB7-49DC-A6D6-78F5AA6252E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C833184-0AB7-49DC-A6D6-78F5AA6252E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C833184-0AB7-49DC-A6D6-78F5AA6252E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C833184-0AB7-49DC-A6D6-78F5AA6252E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
