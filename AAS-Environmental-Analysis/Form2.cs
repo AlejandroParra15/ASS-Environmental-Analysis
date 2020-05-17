@@ -36,47 +36,7 @@ namespace AAS_Environmental_Analysis
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String variable = "";
-            switch (comboBox1.SelectedItem)
-            {
-
-                case "PM10":
-                    variable = "PM10";
-                    break;
-
-                case "NO2":
-                    variable = "NO2";
-                    break;
-                case "O3":
-                    variable = "O3";
-                    break;
-
-            }
-            RegresionChart.Series.Clear();
-            RegresionChart.Series.Add("Data Points");
-            RegresionChart.Series["Data Points"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            concentration = new double[Dates.Count];
-            for (int r = 0; r < Dates.Count; r++)
-            {
-                callData("www.datos.gov.co", "ysq6-ri4e", Dates[r], variable);
-                double average = Average(data);
-                concentration[r] = average;
-
-                RegresionChart.Series["Data Points"].Points.AddXY(2011 + r, average);
-
-
-            }
-            RegresionChart.Series.Add("QR Line");
-            RegresionChart.Series["QR Line"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            RegresionChart.Series["QR Line"].Color = Color.Cyan;
-
-            double slope, yintercept, rSquared;
-            LinearRegression(year, concentration, out rSquared, out yintercept, out slope);
-            double predicted1 = (slope * year[0]) + yintercept;
-            double predicted2 = (slope * year[6]) + yintercept;
-            RegresionChart.Series["QR Line"].Points.AddXY(year[0], predicted1);
-            RegresionChart.Series["QR Line"].Points.AddXY(year[6], predicted2);
-            result.Text = "Pendiente : " + Math.Round(slope) + "\n" + "\n" + "Intercepto con Y : " + Math.Round(yintercept);
+           
         }
 
         public void callData(String url, String id, String extension, String variable)
@@ -160,6 +120,51 @@ namespace AAS_Environmental_Analysis
                 array[c] = data[c].concentracion;
             }
             return array;
+        }
+
+        private void btCalculate_Click(object sender, EventArgs e)
+        {
+            String variable = "";
+            switch (comboBox1.SelectedItem)
+            {
+
+                case "PM10":
+                    variable = "PM10";
+                    break;
+
+                case "NO2":
+                    variable = "NO2";
+                    break;
+                case "O3":
+                    variable = "O3";
+                    break;
+
+            }
+            RegresionChart.Series.Clear();
+            RegresionChart.Series.Add("Data Points");
+            RegresionChart.Series["Data Points"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            concentration = new double[Dates.Count];
+            for (int r = 0; r < Dates.Count; r++)
+            {
+                callData("www.datos.gov.co", "ysq6-ri4e", Dates[r], variable);
+                double average = Average(data);
+                concentration[r] = average;
+
+                RegresionChart.Series["Data Points"].Points.AddXY(2011 + r, average);
+
+
+            }
+            RegresionChart.Series.Add("QR Line");
+            RegresionChart.Series["QR Line"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            RegresionChart.Series["QR Line"].Color = Color.Cyan;
+
+            double slope, yintercept, rSquared;
+            LinearRegression(year, concentration, out rSquared, out yintercept, out slope);
+            double predicted1 = (slope * year[0]) + yintercept;
+            double predicted2 = (slope * year[6]) + yintercept;
+            RegresionChart.Series["QR Line"].Points.AddXY(year[0], predicted1);
+            RegresionChart.Series["QR Line"].Points.AddXY(year[6], predicted2);
+            result.Text = "Pendiente : " + Math.Round(slope) + "\n" + "\n" + "Intercepto con Y : " + Math.Round(yintercept);
         }
     }
 }

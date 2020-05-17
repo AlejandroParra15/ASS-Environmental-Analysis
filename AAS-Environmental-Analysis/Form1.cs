@@ -19,7 +19,7 @@ namespace AAS_Environmental_Analysis
 {
     public partial class Form1 : Form
     {
-        
+
 
         //------------------------------------------------
         public int offset = 0;
@@ -130,9 +130,9 @@ namespace AAS_Environmental_Analysis
 
         public void callData(int page, String url, String id)
         {
-          
+
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://" + url + "/resource/" + id + ".json?$limit=" + 1000 + "&$offset=" + offset + extension);
-           // Console.WriteLine("https://" + url + "/resource/" + id + ".json?$limit=" + 1000 + "&$offset=" + offset + extension);
+            // Console.WriteLine("https://" + url + "/resource/" + id + ".json?$limit=" + 1000 + "&$offset=" + offset + extension);
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
@@ -221,8 +221,10 @@ namespace AAS_Environmental_Analysis
             paneFilters.BringToFront();
         }
 
-          private void btRegression_Click(object sender, EventArgs e)
+        private void btRegression_Click(object sender, EventArgs e)
         {
+            Form2 f2 = new Form2();
+            f2.Show();
             panelHeatMap.Visible = false;
             panelSupHeatMap.Visible = false;
             paneDataBase.Visible = false;
@@ -407,8 +409,7 @@ namespace AAS_Environmental_Analysis
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //drawHeatMap();
-            loadFile();
+           
         }
 
         public void loadFile() {
@@ -509,8 +510,19 @@ namespace AAS_Environmental_Analysis
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
+        }
+
+
+        private void btClear_Click(object sender, EventArgs e)
+        {
             clearMap();
         }
 
+        private void btHeat_Click(object sender, EventArgs e)
+        {
+            //drawHeatMap();
+            loadFile();
+        }
     }
 }

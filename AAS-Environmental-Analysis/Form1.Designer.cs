@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,8 +66,6 @@
             this.progressBar = new Bunifu.Framework.UI.BunifuProgressBar();
             this.label7 = new System.Windows.Forms.Label();
             this.dgData = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelSupHeatMap = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
@@ -86,6 +85,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btClear = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btHeat = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -196,8 +197,8 @@
             this.bunifuFlatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
             this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton2.BorderRadius = 0;
-            this.bunifuFlatButton2.ButtonText = "Filters";
-            this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton2.ButtonText = "";
+            this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Default;
             this.bunifuFlatButton2.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton2.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuFlatButton2.ForeColor = System.Drawing.Color.CornflowerBlue;
@@ -222,7 +223,6 @@
             this.bunifuFlatButton2.selected = false;
             this.bunifuFlatButton2.Size = new System.Drawing.Size(198, 48);
             this.bunifuFlatButton2.TabIndex = 18;
-            this.bunifuFlatButton2.Text = "Filters";
             this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -243,8 +243,8 @@
             this.bunifuFlatButton7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
             this.bunifuFlatButton7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton7.BorderRadius = 0;
-            this.bunifuFlatButton7.ButtonText = "Filters";
-            this.bunifuFlatButton7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton7.ButtonText = "";
+            this.bunifuFlatButton7.Cursor = System.Windows.Forms.Cursors.Default;
             this.bunifuFlatButton7.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton7.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuFlatButton7.ForeColor = System.Drawing.Color.CornflowerBlue;
@@ -269,7 +269,6 @@
             this.bunifuFlatButton7.selected = false;
             this.bunifuFlatButton7.Size = new System.Drawing.Size(198, 48);
             this.bunifuFlatButton7.TabIndex = 16;
-            this.bunifuFlatButton7.Text = "Filters";
             this.bunifuFlatButton7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton7.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton7.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -290,8 +289,8 @@
             this.bunifuFlatButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
             this.bunifuFlatButton6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton6.BorderRadius = 0;
-            this.bunifuFlatButton6.ButtonText = "Filters";
-            this.bunifuFlatButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton6.ButtonText = "";
+            this.bunifuFlatButton6.Cursor = System.Windows.Forms.Cursors.Default;
             this.bunifuFlatButton6.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton6.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuFlatButton6.ForeColor = System.Drawing.Color.CornflowerBlue;
@@ -316,7 +315,6 @@
             this.bunifuFlatButton6.selected = false;
             this.bunifuFlatButton6.Size = new System.Drawing.Size(198, 48);
             this.bunifuFlatButton6.TabIndex = 14;
-            this.bunifuFlatButton6.Text = "Filters";
             this.bunifuFlatButton6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton6.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton6.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -384,13 +382,13 @@
             this.btRegression.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
             this.btRegression.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btRegression.BorderRadius = 0;
-            this.btRegression.ButtonText = "Regression";
+            this.btRegression.ButtonText = "     Regression";
             this.btRegression.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btRegression.DisabledColor = System.Drawing.Color.Gray;
             this.btRegression.Dock = System.Windows.Forms.DockStyle.Top;
             this.btRegression.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btRegression.Iconcolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
-            this.btRegression.Iconimage = null;
+            this.btRegression.Iconimage = global::AAS_Environmental_Analysis.Properties.Resources.regression;
             this.btRegression.Iconimage_right = null;
             this.btRegression.Iconimage_right_Selected = null;
             this.btRegression.Iconimage_Selected = null;
@@ -399,7 +397,7 @@
             this.btRegression.IconRightVisible = true;
             this.btRegression.IconRightZoom = 0D;
             this.btRegression.IconVisible = true;
-            this.btRegression.IconZoom = 90D;
+            this.btRegression.IconZoom = 68D;
             this.btRegression.IsTab = false;
             this.btRegression.Location = new System.Drawing.Point(0, 105);
             this.btRegression.Margin = new System.Windows.Forms.Padding(4);
@@ -410,8 +408,8 @@
             this.btRegression.selected = false;
             this.btRegression.Size = new System.Drawing.Size(198, 48);
             this.btRegression.TabIndex = 10;
-            this.btRegression.Text = "Regression";
-            this.btRegression.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btRegression.Text = "     Regression";
+            this.btRegression.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btRegression.Textcolor = System.Drawing.Color.White;
             this.btRegression.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btRegression.Click += new System.EventHandler(this.btRegression_Click);
@@ -432,13 +430,13 @@
             this.btHeatMap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
             this.btHeatMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btHeatMap.BorderRadius = 0;
-            this.btHeatMap.ButtonText = "Heat Map";
+            this.btHeatMap.ButtonText = "     Heat Map";
             this.btHeatMap.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btHeatMap.DisabledColor = System.Drawing.Color.Gray;
             this.btHeatMap.Dock = System.Windows.Forms.DockStyle.Top;
             this.btHeatMap.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btHeatMap.Iconcolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
-            this.btHeatMap.Iconimage = null;
+            this.btHeatMap.Iconimage = global::AAS_Environmental_Analysis.Properties.Resources.map;
             this.btHeatMap.Iconimage_right = null;
             this.btHeatMap.Iconimage_right_Selected = null;
             this.btHeatMap.Iconimage_Selected = null;
@@ -447,7 +445,7 @@
             this.btHeatMap.IconRightVisible = true;
             this.btHeatMap.IconRightZoom = 0D;
             this.btHeatMap.IconVisible = true;
-            this.btHeatMap.IconZoom = 90D;
+            this.btHeatMap.IconZoom = 65D;
             this.btHeatMap.IsTab = false;
             this.btHeatMap.Location = new System.Drawing.Point(0, 54);
             this.btHeatMap.Margin = new System.Windows.Forms.Padding(4);
@@ -458,8 +456,8 @@
             this.btHeatMap.selected = false;
             this.btHeatMap.Size = new System.Drawing.Size(198, 48);
             this.btHeatMap.TabIndex = 8;
-            this.btHeatMap.Text = "Heat Map";
-            this.btHeatMap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btHeatMap.Text = "     Heat Map";
+            this.btHeatMap.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btHeatMap.Textcolor = System.Drawing.Color.White;
             this.btHeatMap.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btHeatMap.Click += new System.EventHandler(this.btHeatMap_Click);
@@ -486,7 +484,7 @@
             this.btFilters.Dock = System.Windows.Forms.DockStyle.Top;
             this.btFilters.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btFilters.Iconcolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
-            this.btFilters.Iconimage = global::AAS_Environmental_Analysis.Properties.Resources.filter__2_;
+            this.btFilters.Iconimage = ((System.Drawing.Image)(resources.GetObject("btFilters.Iconimage")));
             this.btFilters.Iconimage_right = null;
             this.btFilters.Iconimage_right_Selected = null;
             this.btFilters.Iconimage_Selected = null;
@@ -529,7 +527,7 @@
             this.btDataBase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDataBase.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btDataBase.ForeColor = System.Drawing.Color.White;
-            this.btDataBase.Image = global::AAS_Environmental_Analysis.Properties.Resources.internet__2_;
+            this.btDataBase.Image = ((System.Drawing.Image)(resources.GetObject("btDataBase.Image")));
             this.btDataBase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btDataBase.Location = new System.Drawing.Point(3, 3);
             this.btDataBase.Name = "btDataBase";
@@ -553,7 +551,7 @@
             // btMinimize
             // 
             this.btMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btMinimize.Image = global::AAS_Environmental_Analysis.Properties.Resources.minimizeIcon;
+            this.btMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btMinimize.Image")));
             this.btMinimize.Location = new System.Drawing.Point(1030, 2);
             this.btMinimize.Name = "btMinimize";
             this.btMinimize.Size = new System.Drawing.Size(35, 36);
@@ -564,7 +562,7 @@
             // btClose
             // 
             this.btClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btClose.Image = global::AAS_Environmental_Analysis.Properties.Resources.exit;
+            this.btClose.Image = ((System.Drawing.Image)(resources.GetObject("btClose.Image")));
             this.btClose.Location = new System.Drawing.Point(1065, 2);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(35, 36);
@@ -706,7 +704,7 @@
             this.btNext.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btNext.Iconcolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
             this.btNext.Iconimage = null;
-            this.btNext.Iconimage_right = global::AAS_Environmental_Analysis.Properties.Resources.next__1_;
+            this.btNext.Iconimage_right = ((System.Drawing.Image)(resources.GetObject("btNext.Iconimage_right")));
             this.btNext.Iconimage_right_Selected = null;
             this.btNext.Iconimage_Selected = null;
             this.btNext.IconMarginLeft = 0;
@@ -768,7 +766,7 @@
             this.btPrev.DisabledColor = System.Drawing.Color.Gray;
             this.btPrev.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btPrev.Iconcolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
-            this.btPrev.Iconimage = global::AAS_Environmental_Analysis.Properties.Resources.next;
+            this.btPrev.Iconimage = ((System.Drawing.Image)(resources.GetObject("btPrev.Iconimage")));
             this.btPrev.Iconimage_right = null;
             this.btPrev.Iconimage_right_Selected = null;
             this.btPrev.Iconimage_Selected = null;
@@ -828,28 +826,6 @@
             this.dgData.Size = new System.Drawing.Size(768, 285);
             this.dgData.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(562, 17);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 41);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "HeatMap";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(359, 19);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 41);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "clear";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(241)))), ((int)(((byte)(246)))));
@@ -867,9 +843,9 @@
             // panelSupHeatMap
             // 
             this.panelSupHeatMap.AutoScroll = true;
+            this.panelSupHeatMap.Controls.Add(this.btHeat);
+            this.panelSupHeatMap.Controls.Add(this.btClear);
             this.panelSupHeatMap.Controls.Add(this.label12);
-            this.panelSupHeatMap.Controls.Add(this.button1);
-            this.panelSupHeatMap.Controls.Add(this.button2);
             this.panelSupHeatMap.Location = new System.Drawing.Point(0, 0);
             this.panelSupHeatMap.Name = "panelSupHeatMap";
             this.panelSupHeatMap.Size = new System.Drawing.Size(900, 78);
@@ -878,13 +854,13 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Lucida Sans", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Lucida Sans", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.Location = new System.Drawing.Point(28, 21);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(140, 32);
+            this.label12.Size = new System.Drawing.Size(175, 36);
             this.label12.TabIndex = 11;
-            this.label12.Text = "Heat Map";
+            this.label12.Text = "Heat Map:";
             // 
             // label10
             // 
@@ -1036,7 +1012,7 @@
             this.btLoad.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btLoad.Iconcolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
             this.btLoad.Iconimage = null;
-            this.btLoad.Iconimage_right = global::AAS_Environmental_Analysis.Properties.Resources.download;
+            this.btLoad.Iconimage_right = ((System.Drawing.Image)(resources.GetObject("btLoad.Iconimage_right")));
             this.btLoad.Iconimage_right_Selected = null;
             this.btLoad.Iconimage_Selected = null;
             this.btLoad.IconMarginLeft = 0;
@@ -1149,6 +1125,82 @@
             this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
+            // btClear
+            // 
+            this.btClear.Active = false;
+            this.btClear.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(209)))));
+            this.btClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
+            this.btClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btClear.BorderRadius = 4;
+            this.btClear.ButtonText = "Clear";
+            this.btClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btClear.DisabledColor = System.Drawing.Color.Gray;
+            this.btClear.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.btClear.Iconcolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
+            this.btClear.Iconimage = null;
+            this.btClear.Iconimage_right = null;
+            this.btClear.Iconimage_right_Selected = null;
+            this.btClear.Iconimage_Selected = null;
+            this.btClear.IconMarginLeft = 0;
+            this.btClear.IconMarginRight = 0;
+            this.btClear.IconRightVisible = true;
+            this.btClear.IconRightZoom = 0D;
+            this.btClear.IconVisible = true;
+            this.btClear.IconZoom = 55D;
+            this.btClear.IsTab = false;
+            this.btClear.Location = new System.Drawing.Point(386, 21);
+            this.btClear.Margin = new System.Windows.Forms.Padding(4);
+            this.btClear.Name = "btClear";
+            this.btClear.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
+            this.btClear.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(209)))));
+            this.btClear.OnHoverTextColor = System.Drawing.Color.White;
+            this.btClear.selected = false;
+            this.btClear.Size = new System.Drawing.Size(105, 39);
+            this.btClear.TabIndex = 25;
+            this.btClear.Text = "Clear";
+            this.btClear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btClear.Textcolor = System.Drawing.Color.White;
+            this.btClear.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClear.Click += new System.EventHandler(this.btClear_Click);
+            // 
+            // btHeat
+            // 
+            this.btHeat.Active = false;
+            this.btHeat.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(209)))));
+            this.btHeat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
+            this.btHeat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btHeat.BorderRadius = 4;
+            this.btHeat.ButtonText = "Heat Map";
+            this.btHeat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btHeat.DisabledColor = System.Drawing.Color.Gray;
+            this.btHeat.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.btHeat.Iconcolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
+            this.btHeat.Iconimage = null;
+            this.btHeat.Iconimage_right = null;
+            this.btHeat.Iconimage_right_Selected = null;
+            this.btHeat.Iconimage_Selected = null;
+            this.btHeat.IconMarginLeft = 0;
+            this.btHeat.IconMarginRight = 0;
+            this.btHeat.IconRightVisible = true;
+            this.btHeat.IconRightZoom = 0D;
+            this.btHeat.IconVisible = true;
+            this.btHeat.IconZoom = 55D;
+            this.btHeat.IsTab = false;
+            this.btHeat.Location = new System.Drawing.Point(587, 21);
+            this.btHeat.Margin = new System.Windows.Forms.Padding(4);
+            this.btHeat.Name = "btHeat";
+            this.btHeat.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(179)))), ((int)(((byte)(227)))));
+            this.btHeat.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(209)))));
+            this.btHeat.OnHoverTextColor = System.Drawing.Color.White;
+            this.btHeat.selected = false;
+            this.btHeat.Size = new System.Drawing.Size(105, 39);
+            this.btHeat.TabIndex = 26;
+            this.btHeat.Text = "Heat Map";
+            this.btHeat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btHeat.Textcolor = System.Drawing.Color.White;
+            this.btHeat.TextFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btHeat.Click += new System.EventHandler(this.btHeat_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1244,8 +1296,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private GMap.NET.WindowsForms.GMapControl map;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panelHeatMap;
         private System.Windows.Forms.Panel paneFilters;
         private System.Windows.Forms.Label label8;
@@ -1261,6 +1311,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panelSupHeatMap;
         private System.Windows.Forms.Label label12;
+        private Bunifu.Framework.UI.BunifuFlatButton btClear;
+        private Bunifu.Framework.UI.BunifuFlatButton btHeat;
     }
 }
 
