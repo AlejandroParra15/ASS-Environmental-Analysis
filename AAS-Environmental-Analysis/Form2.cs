@@ -163,8 +163,10 @@ namespace AAS_Environmental_Analysis
             double predicted1 = (slope * year[0]) + yintercept;
             double predicted2 = (slope * year[6]) + yintercept;
             RegresionChart.Series["QR Line"].Points.AddXY(year[0], predicted1);
-            RegresionChart.Series["QR Line"].Points.AddXY(year[6], predicted2);
+            RegresionChart.Series["QR Line"].Points.AddXY(2018, predicted2);
             result.Text = "Pendiente : " + Math.Round(slope) + "\n" + "\n" + "Intercepto con Y : " + Math.Round(yintercept);
+            double futureValue = Math.Round((slope * 2018) + yintercept);
+            future.Text = "Valor para 2018 : " + futureValue;
         }
     }
 }
