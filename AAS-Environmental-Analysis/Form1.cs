@@ -1,6 +1,8 @@
 ﻿using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
+using LiveCharts.Defaults;
+using LiveCharts;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LiveCharts.Wpf;
 
 namespace AAS_Environmental_Analysis
 {
@@ -23,9 +26,14 @@ namespace AAS_Environmental_Analysis
 
         //------------------------------------------------
         public int offset = 0;
+        public int toShow = 1000;
         public String extension = "";
         public String url = "";
         public String id = "";
+        public int slider = 0;
+        List<List<Data>> graphics;
+
+        ChartValues<ObservablePoint> valuesOne = new ChartValues<ObservablePoint> { };
 
         List<Data> data = null;
         List<Dupla> Filter = new List<Dupla>();
@@ -61,6 +69,7 @@ namespace AAS_Environmental_Analysis
             rbSingle.Visible = false;
             rbMultiple.Visible = false;
             panelHeatMap.Visible = false;
+            panelTimeLine.Visible = false;
             panelSupHeatMap.Visible = false;
             //---------------------------------------------
             Filter.Add(new Dupla("Fecha", "fecha=") { });
@@ -131,7 +140,7 @@ namespace AAS_Environmental_Analysis
         public void callData(int page, String url, String id)
         {
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://" + url + "/resource/" + id + ".json?$limit=" + 1000 + "&$offset=" + offset + extension);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://" + url + "/resource/" + id + ".json?$limit=" + toShow + "&$offset=" + offset + extension);
             // Console.WriteLine("https://" + url + "/resource/" + id + ".json?$limit=" + 1000 + "&$offset=" + offset + extension);
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
@@ -151,6 +160,36 @@ namespace AAS_Environmental_Analysis
             }
             Thread.Sleep(500);
             progressBar.Value = 1;
+
+            ThreadStart threadCode = delegate () {
+                int off = offset;
+                graphics = new List<List<Data>>{};
+                for (int i = 0; i < 50; i++)
+                {
+                    off = off + 20;
+                    graphics.Add(fillData(off, url, id));
+                }
+
+            };
+
+            Thread newThread = new Thread(threadCode);
+            newThread.Start();
+        }
+
+        public List<Data> fillData(int page, String url, String id)
+        {
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://" + url + "/resource/" + id + ".json?$limit=" + 40 + "&$offset=" + page + extension);
+            // Console.WriteLine("https://" + url + "/resource/" + id + ".json?$limit=" + 1000 + "&$offset=" + offset + extension);
+            List<Data> datos;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                var json = reader.ReadToEnd();
+                datos = JsonConvert.DeserializeObject<List<Data>>(json);
+            }
+            return datos;
         }
 
         private void btLoad_Click(object sender, EventArgs e)
@@ -199,6 +238,7 @@ namespace AAS_Environmental_Analysis
         {
             paneDataBase.Visible = true;
             panelHeatMap.Visible = false;
+            panelTimeLine.Visible = false;
             paneFilters.Visible = false;
             rbSingle.Visible = false;
             rbMultiple.Visible = false;
@@ -213,6 +253,7 @@ namespace AAS_Environmental_Analysis
         private void btFilters_Click(object sender, EventArgs e)
         {
             paneDataBase.Visible = false;
+            panelTimeLine.Visible = false;
             panelHeatMap.Visible = false;
             paneFilters.Visible = true;
             rbSingle.Visible = true;
@@ -225,6 +266,7 @@ namespace AAS_Environmental_Analysis
         {
             Form2 f2 = new Form2();
             f2.Show();
+            panelTimeLine.Visible = false;
             panelHeatMap.Visible = false;
             panelSupHeatMap.Visible = false;
             paneDataBase.Visible = false;
@@ -240,6 +282,7 @@ namespace AAS_Environmental_Analysis
         private void btHeatMap_Click(object sender, EventArgs e)
         {
             panelHeatMap.Visible = true;
+            panelTimeLine.Visible = false;
             panelSupHeatMap.Visible = true;
             paneDataBase.Visible = false;
             paneFilters.Visible = false;
@@ -249,6 +292,33 @@ namespace AAS_Environmental_Analysis
             btClose.Location = new Point(1065, 2);
             btMinimize.Location = new Point(1030, 2);
             paneMultipleFilters.Visible = false;
+        }
+
+        private void btTimeLine_Click(object sender, EventArgs e)
+        {
+            panelHeatMap.Visible = false;
+            panelTimeLine.Visible = true;
+            panelTimeLine.BringToFront();
+            panelSupHeatMap.Visible = false;
+            paneDataBase.Visible = false;
+            paneFilters.Visible = false;
+            rbSingle.Visible = false;
+            rbMultiple.Visible = false;
+            this.Size = new Size(1100, 560);
+            btClose.Location = new Point(1065, 2);
+            btMinimize.Location = new Point(1030, 2);
+            paneMultipleFilters.Visible = false;
+            makeGraphic();
+            //---------------------------------------
+            cartesianChart1.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = valuesOne,
+                    PointGeometrySize = 15
+                },
+            };
+
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -523,6 +593,41 @@ namespace AAS_Environmental_Analysis
         {
             //drawHeatMap();
             loadFile();
+        }
+          
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            slider = trackBar1.Value;
+            makeGraphic();
+        }
+
+        public void makeGraphic()
+        {
+            List<Data> datos;
+            datos = graphics[slider];
+            Data d = datos[0];
+            valuesOne.Clear();
+            String[] f = datos[0].fecha.Split('/');
+            String y = f[2].Split(' ')[0];
+            int i = 0;
+            foreach (Data item in datos)
+            {
+                String[] fecha = item.fecha.Split('/');
+                String year = fecha[2].Split(' ')[0];
+                labelYear.Text = year;
+                if (y.Equals(year))
+                {
+                    String value = fecha[1] + "" + fecha[0];
+                    int x = int.Parse(value);
+                    valuesOne.Add(new ObservablePoint(i, item.concentracion));
+                    i++;
+                }
+            }
+        }
+
+        private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
+        {
+            toShow = int.Parse(textBox1.Text);
         }
     }
 }
